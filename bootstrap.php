@@ -1,18 +1,14 @@
 <?php 
 
-use \Slim\App as App;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-
-
 require __DIR__.'/vendor/autoload.php';
 
-$app = new App;
+//Arquivo de Configuração
+$config = require __DIR__.'/src/config.php';
 
-$app->get('/hello/{name}',function (Request $request, Response $response){
-    $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, {$name}");
-    return $response;
-});
+$app = new Slim\App($config);
 
+//Arquivo de Rotas
+require __DIR__. '/src/routes.php';
+
+//Executa o código
 $app->run();

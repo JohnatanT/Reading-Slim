@@ -10,5 +10,7 @@ $app = new Slim\App($config);
 //Arquivo de Rotas
 require __DIR__. '/src/routes.php';
 
+require __DIR__. '/src/dependencies.php';
+
 //Executa o código
 $app->run();
